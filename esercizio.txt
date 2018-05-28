@@ -1,6 +1,5 @@
-SELECT *
-FROM (SELECT *
-FROM employees
-LEFT JOIN orders
-ON employees.id = orders.employee_id) AS TAB1 LEFT JOIN customers
-ON TAB1.customer_id = customers.id
+SELECT employees.first_name, employees.last_name
+FROM employees LEFT JOIN orders ON employees.id = orders.employee_id
+	  LEFT JOIN customers ON orders.customer_id = customers.id
+WHERE customers.company NOT IN ("Company O")
+GROUP BY employees.id
